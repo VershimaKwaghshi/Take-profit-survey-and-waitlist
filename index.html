@@ -6,59 +6,87 @@
     <title>Take Profit (TP) — Public Interest & Feedback Survey</title>
     <style>
         :root {
-            --bg-color: #0b0c10;
-            --text-color: #c5c6c7;
-            --accent-color: #45f3ff;
-            --card-bg: #1f2833;
-            --border-color: #2f363d;
-            --error-color: #ff4a4a;
-            --success-color: #2ecc71;
+            /* Vibrant Youth Tech Palette */
+            --bg-gradient: linear-gradient(135deg, #0f0c20 0%, #15102a 50%, #06101e 100%);
+            --text-color: #e2e8f0;
+            --accent-neon: #00f2fe; /* Bright Cyan */
+            --accent-purple: #9b51e0; /* Electric Violet */
+            --accent-green: #00ff87; /* Neon Mint for success metrics */
+            --card-bg: rgba(21, 16, 42, 0.6);
+            --border-color: rgba(0, 242, 254, 0.15);
+            --error-color: #ff4a71;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-color);
             line-height: 1.6;
             margin: 0;
-            padding: 40px 20px;
+            padding: 40px 15px;
         }
         .container {
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 30px 25px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
         h1 {
-            color: #ffffff;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.05em;
-            margin-bottom: 5px;
+            background: linear-gradient(45deg, #ffffff, var(--accent-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin: 0 0 5px 0;
+            text-align: center;
         }
         .subtitle {
-            color: var(--accent-color);
-            font-size: 0.9rem;
+            color: var(--accent-neon);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 20px;
+            letter-spacing: 0.15em;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
         }
         .intro-block {
             font-size: 0.95rem;
-            color: #8b949e;
+            color: #a0aec0;
             margin-bottom: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-purple);
         }
         h2 {
             color: #ffffff;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-top: 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 35px;
             margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
         }
-        hr {
-            border: 0;
-            border-top: 1px solid var(--border-color);
-            margin: 30px 0;
+        /* Color Accent Differentiation per Section Title */
+        h2::before {
+            content: "●";
+            margin-right: 10px;
+            font-size: 0.9rem;
         }
+        #sec-1-title::before { color: var(--accent-neon); }
+        #sec-2-title::before { color: var(--error-color); }
+        #sec-3-title::before { color: var(--accent-purple); }
+        #sec-4-title::before { color: var(--accent-green); }
+        #sec-5-title::before { color: #ffb86c; }
+        #sec-6-title::before { color: #ff79c6; }
+
         .form-group {
             margin-bottom: 25px;
         }
@@ -67,26 +95,38 @@
             color: #ffffff;
             font-weight: 600;
             margin-bottom: 12px;
-            font-size: 1rem;
+            font-size: 0.98rem;
         }
         .description {
             font-size: 0.85rem;
-            color: #8b949e;
+            color: #718096;
             margin-bottom: 10px;
+        }
+        .optional-badge {
+            font-size: 0.7rem;
+            color: var(--accent-neon);
+            font-weight: 700;
+            margin-left: 5px;
+            text-transform: uppercase;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
         }
         input[type="text"], input[type="email"], select, textarea {
             width: 100%;
-            padding: 12px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
+            padding: 14px;
+            background-color: rgba(15, 12, 32, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             color: #ffffff;
-            font-size: 1rem;
+            font-size: 0.95rem;
             box-sizing: border-box;
+            transition: all 0.2s ease;
         }
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--accent-color);
+            border-color: var(--accent-neon);
+            box-shadow: 0 0 8px rgba(0, 242, 254, 0.2);
         }
         .options-layout {
             display: flex;
@@ -98,60 +138,70 @@
             display: flex;
             align-items: center;
             font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
             cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .option-node:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
         }
         .option-node input {
             margin-right: 12px;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--accent-color);
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-neon);
+            cursor: pointer;
         }
         .option-node label {
             cursor: pointer;
             color: var(--text-color);
+            flex-grow: 1;
         }
         button {
-            background-color: var(--accent-color);
-            color: #0b0c10;
+            background: linear-gradient(90deg, var(--accent-neon) 0%, var(--accent-purple) 100%);
+            color: #ffffff;
             border: none;
             padding: 16px 32px;
             font-size: 1rem;
             font-weight: 700;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            transition: opacity 0.2s;
+            transition: transform 0.1s ease, opacity 0.2s;
+            box-shadow: 0 4px 15px rgba(155, 81, 224, 0.3);
         }
         button:hover {
-            opacity: 0.9;
+            opacity: 0.95;
+        }
+        button:active {
+            transform: scale(0.99);
         }
         button:disabled {
-            background-color: #4e5d6c;
-            color: #8b949e;
+            background: #4a5568;
+            color: #a0aec0;
             cursor: not-allowed;
-        }
-        .error-message {
-            color: var(--error-color);
-            font-size: 0.85rem;
-            margin-top: 6px;
-            display: block;
+            box-shadow: none;
         }
         .alert-success {
-            background-color: rgba(46, 204, 113, 0.1);
-            border: 1px solid var(--success-color);
-            color: var(--success-color);
+            background-color: rgba(0, 255, 135, 0.1);
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
             padding: 20px;
-            border-radius: 4px;
+            border-radius: 8px;
             margin-bottom: 25px;
             text-align: center;
             font-weight: 600;
         }
         .alert-error {
-            background-color: rgba(255, 74, 74, 0.1);
+            background-color: rgba(255, 74, 113, 0.1);
             border: 1px solid var(--error-color);
             color: var(--error-color);
             padding: 20px;
-            border-radius: 4px;
+            border-radius: 8px;
             margin-bottom: 25px;
             text-align: center;
             font-weight: 600;
@@ -168,11 +218,11 @@
         Take Profit (TP) is a financial technology platform concept designed to connect retail users, professional trading managers, liquidity providers, and risk-sharing participants through a structured rule-based ecosystem. This survey helps us understand public interest, concerns, and priorities before development. Estimated completion time: 3–5 minutes.
     </div>
     
-    <div data-fs-success class="alert-success" style="display: none;">
+    <div id="survey-success-status" class="alert-success" style="display: none;">
         Thank you. Your feedback payload has been successfully integrated into our market-validation database.
     </div>
-    <div data-fs-error class="alert-error" style="display: none;">
-        Submission error. Please ensure all mandatory parameters are satisfied.
+    <div id="survey-error-status" class="alert-error" style="display: none;">
+        Submission error. Please verify network accessibility or clear empty entries.
     </div>
 
     <form id="tp-public-survey-form">
@@ -182,115 +232,110 @@
         <input type="hidden" name="submission_type" value="public-survey">
         <input type="hidden" name="_gotcha">
 
-        <h2>Section 1: About You</h2>
+        <!-- SECTION 1 -->
+        <h2 id="sec-1-title">Section 1: About You</h2>
         
         <div class="form-group">
             <label class="group-label">1. Which best describes you?</label>
             <div class="options-layout">
-                <div class="option-node"><input type="radio" id="role_active" name="primary_role" value="Active trader" required data-fs-field><label for="role_active">Active trader</label></div>
-                <div class="option-node"><input type="radio" id="role_occasional" name="primary_role" value="Occasional trader" data-fs-field><label for="role_occasional">Occasional trader</label></div>
-                <div class="option-node"><input type="radio" id="role_former" name="primary_role" value="Former trader" data-fs-field><label for="role_former">Former trader</label></div>
-                <div class="option-node"><input type="radio" id="role_investor" name="primary_role" value="Investor" data-fs-field><label for="role_investor">Investor</label></div>
-                <div class="option-node"><input type="radio" id="role_owner" name="primary_role" value="Business owner" data-fs-field><label for="role_owner">Business owner</label></div>
-                <div class="option-node"><input type="radio" id="role_student" name="primary_role" value="Student" data-fs-field><label for="role_student">Student</label></div>
-                <div class="option-node"><input type="radio" id="role_prof" name="primary_role" value="Professional employee" data-fs-field><label for="role_prof">Professional employee</label></div>
-                <div class="option-node"><input type="radio" id="role_free" name="primary_role" value="Freelancer" data-fs-field><label for="role_free">Freelancer</label></div>
-                <div class="option-node"><input type="radio" id="role_other" name="primary_role" value="Other" data-fs-field><label for="role_other">Other</label></div>
+                <div class="option-node"><input type="radio" id="role_active" name="primary_role" value="Active trader" required><label for="role_active">Active trader</label></div>
+                <div class="option-node"><input type="radio" id="role_occasional" name="primary_role" value="Occasional trader"><label for="role_occasional">Occasional trader</label></div>
+                <div class="option-node"><input type="radio" id="role_former" name="primary_role" value="Former trader"><label for="role_former">Former trader</label></div>
+                <div class="option-node"><input type="radio" id="role_investor" name="primary_role" value="Investor"><label for="role_investor">Investor</label></div>
+                <div class="option-node"><input type="radio" id="role_owner" name="primary_role" value="Business owner"><label for="role_owner">Business owner</label></div>
+                <div class="option-node"><input type="radio" id="role_student" name="primary_role" value="Student"><label for="role_student">Student</label></div>
+                <div class="option-node"><input type="radio" id="role_prof" name="primary_role" value="Professional employee"><label for="role_prof">Professional employee</label></div>
+                <div class="option-node"><input type="radio" id="role_free" name="primary_role" value="Freelancer"><label for="role_free">Freelancer</label></div>
+                <div class="option-node"><input type="radio" id="role_other" name="primary_role" value="Other"><label for="role_other">Other</label></div>
             </div>
-            <span data-fs-error="primary_role" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="familiarity" class="group-label">2. How familiar are you with financial markets?</label>
-            <select id="familiarity" name="market_familiarity" required data-fs-field>
+            <select id="familiarity" name="market_familiarity" required>
                 <option value="">-- Select Familiarity Tier --</option>
                 <option value="Very familiar">Very familiar</option>
                 <option value="Somewhat familiar">Somewhat familiar</option>
                 <option value="Basic knowledge">Basic knowledge</option>
                 <option value="No experience">No experience</option>
             </select>
-            <span data-fs-error="market_familiarity" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label class="group-label">3. Which markets have you participated in? (Check all that apply)</label>
             <div class="options-layout">
-                <div class="option-node"><input type="checkbox" id="mkt_fx" name="markets_tracked[]" value="Forex" data-fs-field><label for="mkt_fx">Forex</label></div>
-                <div class="option-node"><input type="checkbox" id="mkt_crypto" name="markets_tracked[]" value="Cryptocurrency" data-fs-field><label for="mkt_crypto">Cryptocurrency</label></div>
-                <div class="option-node"><input type="checkbox" id="mkt_stocks" name="markets_tracked[]" value="Stocks" data-fs-field><label for="mkt_stocks">Stocks</label></div>
-                <div class="option-node"><input type="checkbox" id="mkt_commodities" name="markets_tracked[]" value="Commodities" data-fs-field><label for="mkt_commodities">Commodities</label></div>
-                <div class="option-node"><input type="checkbox" id="mkt_indices" name="markets_tracked[]" value="Indices" data-fs-field><label for="mkt_indices">Indices</label></div>
-                <div class="option-node"><input type="checkbox" id="mkt_none" name="markets_tracked[]" value="None" data-fs-field><label for="mkt_none">None</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_fx" name="markets_tracked" value="Forex"><label for="mkt_fx">Forex</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_crypto" name="markets_tracked" value="Cryptocurrency"><label for="mkt_crypto">Cryptocurrency</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_stocks" name="markets_tracked" value="Stocks"><label for="mkt_stocks">Stocks</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_commodities" name="markets_tracked" value="Commodities"><label for="mkt_commodities">Commodities</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_indices" name="markets_tracked" value="Indices"><label for="mkt_indices">Indices</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_none" name="markets_tracked" value="None"><label for="mkt_none">None</label></div>
             </div>
-            <span data-fs-error="markets_tracked" class="error-message"></span>
         </div>
 
-        <h2>Section 2: Problems & Challenges</h2>
+        <!-- SECTION 2 -->
+        <h2 id="sec-2-title">Section 2: Problems & Challenges</h2>
 
         <div class="form-group">
             <label class="group-label">4. What is the biggest challenge preventing you from growing wealth?</label>
             <div class="options-layout">
-                <div class="option-node"><input type="radio" id="ch_cap" name="wealth_challenge" value="Lack of capital" required data-fs-field><label for="ch_cap">Lack of capital</label></div>
-                <div class="option-node"><input type="radio" id="ch_knw" name="wealth_challenge" value="Lack of knowledge" data-fs-field><label for="ch_knw">Lack of knowledge</label></div>
-                <div class="option-node"><input type="radio" id="ch_fear" name="wealth_challenge" value="Fear of losing money" data-fs-field><label for="ch_fear">Fear of losing money</label></div>
-                <div class="option-node"><input type="radio" id="ch_trust" name="wealth_challenge" value="Lack of trustworthy opportunities" data-fs-field><label for="ch_trust">Lack of trustworthy opportunities</label></div>
-                <div class="option-node"><input type="radio" id="ch_time" name="wealth_challenge" value="Lack of time" data-fs-field><label for="ch_time">Lack of time</label></div>
-                <div class="option-node"><input type="radio" id="ch_access" name="wealth_challenge" value="Limited access to financial services" data-fs-field><label for="ch_access">Limited access to financial services</label></div>
-                <div class="option-node"><input type="radio" id="ch_other" name="wealth_challenge" value="Other" data-fs-field><label for="ch_other">Other</label></div>
+                <div class="option-node"><input type="radio" id="ch_cap" name="wealth_challenge" value="Lack of capital" required><label for="ch_cap">Lack of capital</label></div>
+                <div class="option-node"><input type="radio" id="ch_knw" name="wealth_challenge" value="Lack of knowledge"><label for="ch_knw">Lack of knowledge</label></div>
+                <div class="option-node"><input type="radio" id="ch_fear" name="wealth_challenge" value="Fear of losing money"><label for="ch_fear">Fear of losing money</label></div>
+                <div class="option-node"><input type="radio" id="ch_trust" name="wealth_challenge" value="Lack of trustworthy opportunities"><label for="ch_trust">Lack of trustworthy opportunities</label></div>
+                <div class="option-node"><input type="radio" id="ch_time" name="wealth_challenge" value="Lack of time"><label for="ch_time">Lack of time</label></div>
+                <div class="option-node"><input type="radio" id="ch_access" name="wealth_challenge" value="Limited access to financial services"><label for="ch_access">Limited access to financial services</label></div>
+                <div class="option-node"><input type="radio" id="ch_other" name="wealth_challenge" value="Other"><label for="ch_other">Other</label></div>
             </div>
-            <span data-fs-error="wealth_challenge" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label class="group-label">5. Have you ever lost money due to poor investment or trading decisions?</label>
             <div class="options-layout">
-                <div class="option-node"><input type="radio" id="lost_yes" name="historical_loss" value="Yes" required data-fs-field><label for="lost_yes">Yes</label></div>
-                <div class="option-node"><input type="radio" id="lost_no" name="historical_loss" value="No" data-fs-field><label for="lost_no">No</label></div>
+                <div class="option-node"><input type="radio" id="lost_yes" name="historical_loss" value="Yes" required><label for="lost_yes">Yes</label></div>
+                <div class="option-node"><input type="radio" id="lost_no" name="historical_loss" value="No"><label for="lost_no">No</label></div>
             </div>
-            <span data-fs-error="historical_loss" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="concern_level" class="group-label">6. How concerned are you about losing your entire investment capital?</label>
-            <select id="concern_level" name="liquidation_concern" required data-fs-field>
+            <select id="concern_level" name="liquidation_concern" required>
                 <option value="">-- Select Concern Level --</option>
                 <option value="Extremely concerned">Extremely concerned</option>
                 <option value="Moderately concerned">Moderately concerned</option>
                 <option value="Slightly concerned">Slightly concerned</option>
                 <option value="Not concerned">Not concerned</option>
             </select>
-            <span data-fs-error="liquidation_concern" class="error-message"></span>
         </div>
 
-        <h2>Section 3: TP Concept Evaluation</h2>
+        <!-- SECTION 3 -->
+        <h2 id="sec-3-title">Section 3: TP Concept Evaluation</h2>
 
         <div class="form-group">
             <label for="interest_mitigation" class="group-label">7. If a platform could reduce the risk of permanently losing your capital, how interested would you be?</label>
-            <select id="interest_mitigation" name="interest_risk_mitigation" required data-fs-field>
+            <select id="interest_mitigation" name="interest_risk_mitigation" required>
                 <option value="">-- Select Option --</option>
                 <option value="Very interested">Very interested</option>
                 <option value="Interested">Interested</option>
                 <option value="Neutral">Neutral</option>
                 <option value="Not interested">Not interested</option>
             </select>
-            <span data-fs-error="interest_risk_mitigation" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="manager_opt_in" class="group-label">8. Would you consider allowing a vetted professional manager to trade on your behalf if clear risk limits existed?</label>
-            <select id="manager_opt_in" name="manager_delegation" required data-fs-field>
+            <select id="manager_opt_in" name="manager_delegation" required>
                 <option value="">-- Select Option --</option>
                 <option value="Definitely">Definitely</option>
                 <option value="Maybe">Maybe</option>
                 <option value="Unsure">Unsure</option>
                 <option value="No">No</option>
             </select>
-            <span data-fs-error="manager_delegation" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="target_feature" class="group-label">9. Which TP feature interests you the most?</label>
-            <select id="target_feature" name="primary_feature_interest" required data-fs-field>
+            <select id="target_feature" name="primary_feature_interest" required>
                 <option value="">-- Select Feature --</option>
                 <option value="Capital protection mechanisms">Capital protection mechanisms</option>
                 <option value="Access to professional managers">Access to professional managers</option>
@@ -299,12 +344,11 @@
                 <option value="Referral rewards">Referral rewards</option>
                 <option value="None of the above">None of the above</option>
             </select>
-            <span data-fs-error="primary_feature_interest" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="primary_skepticism" class="group-label">10. What concerns you most about a platform like TP?</label>
-            <select id="primary_skepticism" name="primary_skepticism_vector" required data-fs-field>
+            <select id="primary_skepticism" name="primary_skepticism_vector" required>
                 <option value="">-- Select Primary Concern --</option>
                 <option value="Trust and transparency">Trust and transparency</option>
                 <option value="Security">Security</option>
@@ -314,36 +358,35 @@
                 <option value="Risk-sharing structure">Risk-sharing structure</option>
                 <option value="Other">Other</option>
             </select>
-            <span data-fs-error="primary_skepticism_vector" class="error-message"></span>
         </div>
 
-        <h2>Section 4: Community Participation</h2>
+        <!-- SECTION 4 -->
+        <h2 id="sec-4-title">Section 4: Community Participation</h2>
 
         <div class="form-group">
             <label class="group-label">11. Would you be interested in earning rewards for supporting other users within the ecosystem?</label>
             <div class="options-layout">
-                <div class="option-node"><input type="radio" id="rew_yes" name="incentive_sharing" value="Yes" required data-fs-field><label for="rew_yes">Yes</label></div>
-                <div class="option-node"><input type="radio" id="rew_maybe" name="incentive_sharing" value="Maybe" data-fs-field><label for="rew_maybe">Maybe</label></div>
-                <div class="option-node"><input type="radio" id="rew_no" name="incentive_sharing" value="No" data-fs-field><label for="rew_no">No</label></div>
+                <div class="option-node"><input type="radio" id="rew_yes" name="incentive_sharing" value="Yes" required><label for="rew_yes">Yes</label></div>
+                <div class="option-node"><input type="radio" id="rew_maybe" name="incentive_sharing" value="Maybe"><label for="rew_maybe">Maybe</label></div>
+                <div class="option-node"><input type="radio" id="rew_no" name="incentive_sharing" value="No"><label for="rew_no">No</label></div>
             </div>
-            <span data-fs-error="incentive_sharing" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label class="group-label">12. Would you be willing to refer friends if the platform provided incentives?</label>
             <div class="options-layout">
-                <div class="option-node"><input type="radio" id="ref_def" name="referral_intent" value="Definitely" required data-fs-field><label for="ref_def">Definitely</label></div>
-                <div class="option-node"><input type="radio" id="ref_maybe" name="referral_intent" value="Maybe" data-fs-field><label for="ref_maybe">Maybe</label></div>
-                <div class="option-node"><input type="radio" id="ref_no" name="referral_intent" value="No" data-fs-field><label for="ref_no">No</label></div>
+                <div class="option-node"><input type="radio" id="ref_def" name="referral_intent" value="Definitely" required><label for="ref_def">Definitely</label></div>
+                <div class="option-node"><input type="radio" id="ref_maybe" name="referral_intent" value="Maybe"><label for="ref_maybe">Maybe</label></div>
+                <div class="option-node"><input type="radio" id="ref_no" name="referral_intent" value="No"><label for="ref_no">No</label></div>
             </div>
-            <span data-fs-error="referral_intent" class="error-message"></span>
         </div>
 
-        <h2>Section 5: Future Adoption</h2>
+        <!-- SECTION 5 -->
+        <h2 id="sec-5-title">Section 5: Future Adoption</h2>
 
         <div class="form-group">
             <label for="adoption_velocity" class="group-label">13. If TP launched today, how likely would you be to create an account?</label>
-            <select id="adoption_velocity" name="account_creation_likelihood" required data-fs-field>
+            <select id="adoption_velocity" name="account_creation_likelihood" required>
                 <option value="">-- Select Likelihood --</option>
                 <option value="Very likely">Very likely</option>
                 <option value="Likely">Likely</option>
@@ -351,38 +394,91 @@
                 <option value="Unlikely">Unlikely</option>
                 <option value="Very unlikely">Very unlikely</option>
             </select>
-            <span data-fs-error="account_creation_likelihood" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="country_node" class="group-label">14. Which country are you responding from?</label>
-            <input type="text" id="country_node" name="provenance_country" required placeholder="e.g., France, Switzerland, Nigeria" data-fs-field>
-            <span data-fs-error="provenance_country" class="error-message"></span>
+            <input type="text" id="country_node" name="provenance_country" required placeholder="e.g., Nigeria, Ghana, UK">
         </div>
 
         <div class="form-group">
             <label for="trust_trigger" class="group-label">15. What would make you trust TP?</label>
-            <textarea id="trust_trigger" name="trust_catalysts" rows="3" placeholder="Identify security or transparency mechanisms that drive your confidence..." data-fs-field></textarea>
-            <span data-fs-error="trust_catalysts" class="error-message"></span>
+            <textarea id="trust_trigger" name="trust_catalysts" rows="3" placeholder="What drives your confidence..."></textarea>
         </div>
 
         <div class="form-group">
             <label for="open_feedback" class="group-label">16. Additional comments or suggestions</label>
-            <textarea id="open_feedback" name="system_feedback" rows="3" placeholder="Enter supplemental notes or observations..." data-fs-field></textarea>
-            <span data-fs-error="system_feedback" class="error-message"></span>
+            <textarea id="open_feedback" name="system_feedback" rows="3" placeholder="Enter notes or observations..."></textarea>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 id="sec-6-title">Section 6: Contact Information <span class="optional-badge">Optional</span></h2>
+        <p class="description">Provide your details if you would like to be notified when the platform goes live. You can leave these completely blank.</p>
+
+        <div class="form-group">
+            <label for="user_name">Full Name <span class="optional-badge">Optional</span></label>
+            <input type="text" id="user_name" name="respondent_name" placeholder="John Doe">
+        </div>
+
+        <div class="form-group">
+            <label for="user_whatsapp">WhatsApp Number <span class="optional-badge">Optional</span></label>
+            <input type="text" id="user_whatsapp" name="respondent_whatsapp" placeholder="e.g., +234...">
+        </div>
+
+        <div class="form-group">
+            <label for="user_email">Email Address <span class="optional-badge">Optional</span></label>
+            <input type="email" id="user_email" name="respondent_email" placeholder="name@domain.com">
         </div>
 
         <div class="form-group" style="margin-top: 40px;">
-            <button type="submit" data-fs-submit-btn>Submit Survey Payload</button>
+            <button type="submit" id="submit-btn">Submit Survey Payload</button>
         </div>
     </form>
 </div>
 
 <script>
-  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-  formspree('initForm', { formElement: '#tp-public-survey-form', formId: 'mojzzkyr' });
+    document.getElementById('tp-public-survey-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var form = event.target;
+        var button = document.getElementById('submit-btn');
+        var successAlert = document.getElementById('survey-success-status');
+        var errorAlert = document.getElementById('survey-error-status');
+        
+        button.disabled = true;
+        button.innerText = 'Transmitting...';
+        
+        successAlert.style.display = 'none';
+        errorAlert.style.display = 'none';
+        
+        var formData = new FormData(form);
+        
+        fetch('https://formspree.io/f/mojzzkyr', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(function(response) {
+            if (response.ok) {
+                successAlert.style.display = 'block';
+                form.reset();
+                button.innerText = 'Payload Verified';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                errorAlert.style.display = 'block';
+                button.disabled = false;
+                button.innerText = 'Submit Survey Payload';
+            }
+        })
+        .catch(function(error) {
+            errorAlert.style.display = 'block';
+            button.disabled = false;
+            button.innerText = 'Submit Survey Payload';
+        });
+    });
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
