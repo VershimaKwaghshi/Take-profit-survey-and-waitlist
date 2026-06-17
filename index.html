@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Take Profit (TP) — Validation Engine</title>
+    <title>Take Profit (TP) — Public Interest & Feedback Survey</title>
     <style>
         :root {
             --bg-color: #0b0c10;
             --text-color: #c5c6c7;
             --accent-color: #45f3ff;
             --card-bg: #1f2833;
+            --border-color: #2f363d;
             --error-color: #ff4a4a;
             --success-color: #2ecc71;
         }
@@ -37,22 +38,36 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+        }
+        .intro-block {
+            font-size: 0.95rem;
+            color: #8b949e;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
         }
         hr {
             border: 0;
-            border-top: 1px solid var(--card-bg);
+            border-top: 1px solid var(--border-color);
             margin: 30px 0;
         }
         .form-group {
             margin-bottom: 25px;
         }
-        label {
+        label.group-label {
             display: block;
             color: #ffffff;
             font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 12px;
+            font-size: 1rem;
         }
         .description {
             font-size: 0.85rem;
@@ -63,7 +78,7 @@
             width: 100%;
             padding: 12px;
             background-color: var(--card-bg);
-            border: 1px solid #2f363d;
+            border: 1px solid var(--border-color);
             border-radius: 4px;
             color: #ffffff;
             font-size: 1rem;
@@ -73,23 +88,33 @@
             outline: none;
             border-color: var(--accent-color);
         }
-        .radio-group {
-            margin-top: 8px;
+        .options-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 5px;
         }
-        .radio-option {
+        .option-node {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
             font-size: 0.95rem;
+            cursor: pointer;
         }
-        .radio-option input {
-            margin-right: 10px;
+        .option-node input {
+            margin-right: 12px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent-color);
+        }
+        .option-node label {
+            cursor: pointer;
+            color: var(--text-color);
         }
         button {
             background-color: var(--accent-color);
             color: #0b0c10;
             border: none;
-            padding: 14px 28px;
+            padding: 16px 32px;
             font-size: 1rem;
             font-weight: 700;
             border-radius: 4px;
@@ -108,7 +133,7 @@
         .error-message {
             color: var(--error-color);
             font-size: 0.85rem;
-            margin-top: 5px;
+            margin-top: 6px;
             display: block;
         }
         .alert-success {
@@ -137,108 +162,225 @@
 
 <div class="container">
     <h1>TAKE PROFIT (TP)</h1>
-    <div class="subtitle">Private Pilot Risk Engine Validation Survey</div>
-    <p>This validation intake maps trading behavior, infrastructure dependencies, and distribution metrics to optimize non-custodial risk-mitigation routing loops.</p>
+    <div class="subtitle">Public Interest & Feedback Survey</div>
     
-    <hr>
-
-    <!-- Formspree State Response Elements -->
+    <div class="intro-block">
+        Take Profit (TP) is a financial technology platform concept designed to connect retail users, professional trading managers, liquidity providers, and risk-sharing participants through a structured rule-based ecosystem. This survey helps us understand public interest, concerns, and priorities before development. Estimated completion time: 3–5 minutes.
+    </div>
+    
     <div data-fs-success class="alert-success" style="display: none;">
-        Payload verified. Your node has been assigned a placeholder index in the upcoming validation queue.
+        Thank you. Your feedback payload has been successfully integrated into our market-validation database.
     </div>
     <div data-fs-error class="alert-error" style="display: none;">
-        Submission failed. Please verify your data attributes and clear infrastructure blocks.
+        Submission error. Please ensure all mandatory parameters are satisfied.
     </div>
 
-    <form id="tp-validation-form">
+    <form id="tp-public-survey-form">
         
-        <!-- Section 1: Identification & Core Routing -->
-        <div class="form-group">
-            <label for="name">Full Name / Corporate Entity</label>
-            <input type="text" id="name" name="name" required placeholder="John Doe" data-fs-field>
-            <span data-fs-error="name" class="error-message"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Secure Communication Email Address</label>
-            <input type="email" id="email" name="_replyto" required placeholder="name@domain.com" data-fs-field>
-            <span data-fs-error="_replyto" class="error-message"></span>
-        </div>
-
-        <!-- Section 2: Technical & Broker Parameters -->
-        <div class="form-group">
-            <label for="broker">Primary Brokerage Infrastructure</label>
-            <div class="description">Identify your active liquidity routing clearinghouse.</div>
-            <select id="broker" name="primary_broker" required data-fs-field>
-                <option value="">-- Select Active Broker --</option>
-                <option value="exness">Exness</option>
-                <option value="pepperstone">Pepperstone</option>
-                <option value="instaforex">InstaForex</option>
-                <option value="fundednext">FundedNext (Evaluation Engine)</option>
-                <option value="other">Alternative Brokerage Corridor</option>
-            </select>
-            <span data-fs-error="primary_broker" class="error-message"></span>
-        </div>
-
-        <div class="form-group">
-            <label>Current Drawdown Risk Enforcement Policy</label>
-            <div class="description">How do you currently prevent account liquidation during macro market gaps?</div>
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input type="radio" id="risk1" name="risk_policy" value="manual" required data-fs-field>
-                    <label for="risk1">Manual Stop-Loss Execution (Susceptible to Slippage)</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" id="risk2" name="risk_policy" value="none" data-fs-field>
-                    <label for="risk2">No Hard Liquidation Locks (Relying entirely on equity buffers)</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" id="risk3" name="risk_policy" value="automated" data-fs-field>
-                    <label for="risk3">Automated Infrastructure-Level Locks</label>
-                </div>
-            </div>
-            <span data-fs-error="risk_policy" class="error-message"></span>
-        </div>
-
-        <!-- Section 3: Network & Cohort Distribution -->
-        <div class="form-group">
-            <label for="volume">Average Monthly Nominal Trading Volume (USD)</label>
-            <select id="volume" name="monthly_volume" required data-fs-field>
-                <option value="low">Under $50,000</option>
-                <option value="mid">$50,000 - $500,000</option>
-                <option value="high">$50,000 - $5,000,000</option>
-                <option value="institutional">Above $5,000,000</option>
-            </select>
-            <span data-fs-error="monthly_volume" class="error-message"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="referral_network">Current Affiliate or Managed User Network Size</label>
-            <div class="description">Necessary for structural allocation mapping within the serial cohort building phase.</div>
-            <input type="text" id="referral_network" name="network_nodes" placeholder="e.g., 50 active traders" data-fs-field>
-            <span data-fs-error="network_nodes" class="error-message"></span>
-        </div>
-
-        <!-- Section 4: Operational Data -->
-        <div class="form-group">
-            <label for="critical_features">What is your most critical requirement for an automated risk-enforcement engine?</label>
-            <textarea id="critical_features" name="critical_needs" rows="4" placeholder="Describe edge-case execution requirements or latency protection needs..." data-fs-field></textarea>
-            <span data-fs-error="critical_needs" class="error-message"></span>
-        </div>
-
-        <!-- Anti-Spam Hidden Field -->
+        <input type="hidden" name="survey_version" value="TP-v1">
+        <input type="hidden" name="source" value="github-pages">
+        <input type="hidden" name="submission_type" value="public-survey">
         <input type="hidden" name="_gotcha">
 
+        <h2>Section 1: About You</h2>
+        
+        <div class="form-group">
+            <label class="group-label">1. Which best describes you?</label>
+            <div class="options-layout">
+                <div class="option-node"><input type="radio" id="role_active" name="primary_role" value="Active trader" required data-fs-field><label for="role_active">Active trader</label></div>
+                <div class="option-node"><input type="radio" id="role_occasional" name="primary_role" value="Occasional trader" data-fs-field><label for="role_occasional">Occasional trader</label></div>
+                <div class="option-node"><input type="radio" id="role_former" name="primary_role" value="Former trader" data-fs-field><label for="role_former">Former trader</label></div>
+                <div class="option-node"><input type="radio" id="role_investor" name="primary_role" value="Investor" data-fs-field><label for="role_investor">Investor</label></div>
+                <div class="option-node"><input type="radio" id="role_owner" name="primary_role" value="Business owner" data-fs-field><label for="role_owner">Business owner</label></div>
+                <div class="option-node"><input type="radio" id="role_student" name="primary_role" value="Student" data-fs-field><label for="role_student">Student</label></div>
+                <div class="option-node"><input type="radio" id="role_prof" name="primary_role" value="Professional employee" data-fs-field><label for="role_prof">Professional employee</label></div>
+                <div class="option-node"><input type="radio" id="role_free" name="primary_role" value="Freelancer" data-fs-field><label for="role_free">Freelancer</label></div>
+                <div class="option-node"><input type="radio" id="role_other" name="primary_role" value="Other" data-fs-field><label for="role_other">Other</label></div>
+            </div>
+            <span data-fs-error="primary_role" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="familiarity" class="group-label">2. How familiar are you with financial markets?</label>
+            <select id="familiarity" name="market_familiarity" required data-fs-field>
+                <option value="">-- Select Familiarity Tier --</option>
+                <option value="Very familiar">Very familiar</option>
+                <option value="Somewhat familiar">Somewhat familiar</option>
+                <option value="Basic knowledge">Basic knowledge</option>
+                <option value="No experience">No experience</option>
+            </select>
+            <span data-fs-error="market_familiarity" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="group-label">3. Which markets have you participated in? (Check all that apply)</label>
+            <div class="options-layout">
+                <div class="option-node"><input type="checkbox" id="mkt_fx" name="markets_tracked[]" value="Forex" data-fs-field><label for="mkt_fx">Forex</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_crypto" name="markets_tracked[]" value="Cryptocurrency" data-fs-field><label for="mkt_crypto">Cryptocurrency</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_stocks" name="markets_tracked[]" value="Stocks" data-fs-field><label for="mkt_stocks">Stocks</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_commodities" name="markets_tracked[]" value="Commodities" data-fs-field><label for="mkt_commodities">Commodities</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_indices" name="markets_tracked[]" value="Indices" data-fs-field><label for="mkt_indices">Indices</label></div>
+                <div class="option-node"><input type="checkbox" id="mkt_none" name="markets_tracked[]" value="None" data-fs-field><label for="mkt_none">None</label></div>
+            </div>
+            <span data-fs-error="markets_tracked" class="error-message"></span>
+        </div>
+
+        <h2>Section 2: Problems & Challenges</h2>
+
+        <div class="form-group">
+            <label class="group-label">4. What is the biggest challenge preventing you from growing wealth?</label>
+            <div class="options-layout">
+                <div class="option-node"><input type="radio" id="ch_cap" name="wealth_challenge" value="Lack of capital" required data-fs-field><label for="ch_cap">Lack of capital</label></div>
+                <div class="option-node"><input type="radio" id="ch_knw" name="wealth_challenge" value="Lack of knowledge" data-fs-field><label for="ch_knw">Lack of knowledge</label></div>
+                <div class="option-node"><input type="radio" id="ch_fear" name="wealth_challenge" value="Fear of losing money" data-fs-field><label for="ch_fear">Fear of losing money</label></div>
+                <div class="option-node"><input type="radio" id="ch_trust" name="wealth_challenge" value="Lack of trustworthy opportunities" data-fs-field><label for="ch_trust">Lack of trustworthy opportunities</label></div>
+                <div class="option-node"><input type="radio" id="ch_time" name="wealth_challenge" value="Lack of time" data-fs-field><label for="ch_time">Lack of time</label></div>
+                <div class="option-node"><input type="radio" id="ch_access" name="wealth_challenge" value="Limited access to financial services" data-fs-field><label for="ch_access">Limited access to financial services</label></div>
+                <div class="option-node"><input type="radio" id="ch_other" name="wealth_challenge" value="Other" data-fs-field><label for="ch_other">Other</label></div>
+            </div>
+            <span data-fs-error="wealth_challenge" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="group-label">5. Have you ever lost money due to poor investment or trading decisions?</label>
+            <div class="options-layout">
+                <div class="option-node"><input type="radio" id="lost_yes" name="historical_loss" value="Yes" required data-fs-field><label for="lost_yes">Yes</label></div>
+                <div class="option-node"><input type="radio" id="lost_no" name="historical_loss" value="No" data-fs-field><label for="lost_no">No</label></div>
+            </div>
+            <span data-fs-error="historical_loss" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="concern_level" class="group-label">6. How concerned are you about losing your entire investment capital?</label>
+            <select id="concern_level" name="liquidation_concern" required data-fs-field>
+                <option value="">-- Select Concern Level --</option>
+                <option value="Extremely concerned">Extremely concerned</option>
+                <option value="Moderately concerned">Moderately concerned</option>
+                <option value="Slightly concerned">Slightly concerned</option>
+                <option value="Not concerned">Not concerned</option>
+            </select>
+            <span data-fs-error="liquidation_concern" class="error-message"></span>
+        </div>
+
+        <h2>Section 3: TP Concept Evaluation</h2>
+
+        <div class="form-group">
+            <label for="interest_mitigation" class="group-label">7. If a platform could reduce the risk of permanently losing your capital, how interested would you be?</label>
+            <select id="interest_mitigation" name="interest_risk_mitigation" required data-fs-field>
+                <option value="">-- Select Option --</option>
+                <option value="Very interested">Very interested</option>
+                <option value="Interested">Interested</option>
+                <option value="Neutral">Neutral</option>
+                <option value="Not interested">Not interested</option>
+            </select>
+            <span data-fs-error="interest_risk_mitigation" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="manager_opt_in" class="group-label">8. Would you consider allowing a vetted professional manager to trade on your behalf if clear risk limits existed?</label>
+            <select id="manager_opt_in" name="manager_delegation" required data-fs-field>
+                <option value="">-- Select Option --</option>
+                <option value="Definitely">Definitely</option>
+                <option value="Maybe">Maybe</option>
+                <option value="Unsure">Unsure</option>
+                <option value="No">No</option>
+            </select>
+            <span data-fs-error="manager_delegation" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="target_feature" class="group-label">9. Which TP feature interests you the most?</label>
+            <select id="target_feature" name="primary_feature_interest" required data-fs-field>
+                <option value="">-- Select Feature --</option>
+                <option value="Capital protection mechanisms">Capital protection mechanisms</option>
+                <option value="Access to professional managers">Access to professional managers</option>
+                <option value="Capital-building opportunities">Capital-building opportunities</option>
+                <option value="Community risk-sharing features">Community risk-sharing features</option>
+                <option value="Referral rewards">Referral rewards</option>
+                <option value="None of the above">None of the above</option>
+            </select>
+            <span data-fs-error="primary_feature_interest" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="primary_skepticism" class="group-label">10. What concerns you most about a platform like TP?</label>
+            <select id="primary_skepticism" name="primary_skepticism_vector" required data-fs-field>
+                <option value="">-- Select Primary Concern --</option>
+                <option value="Trust and transparency">Trust and transparency</option>
+                <option value="Security">Security</option>
+                <option value="Regulation and compliance">Regulation and compliance</option>
+                <option value="Fees">Fees</option>
+                <option value="Manager performance">Manager performance</option>
+                <option value="Risk-sharing structure">Risk-sharing structure</option>
+                <option value="Other">Other</option>
+            </select>
+            <span data-fs-error="primary_skepticism_vector" class="error-message"></span>
+        </div>
+
+        <h2>Section 4: Community Participation</h2>
+
+        <div class="form-group">
+            <label class="group-label">11. Would you be interested in earning rewards for supporting other users within the ecosystem?</label>
+            <div class="options-layout">
+                <div class="option-node"><input type="radio" id="rew_yes" name="incentive_sharing" value="Yes" required data-fs-field><label for="rew_yes">Yes</label></div>
+                <div class="option-node"><input type="radio" id="rew_maybe" name="incentive_sharing" value="Maybe" data-fs-field><label for="rew_maybe">Maybe</label></div>
+                <div class="option-node"><input type="radio" id="rew_no" name="incentive_sharing" value="No" data-fs-field><label for="rew_no">No</label></div>
+            </div>
+            <span data-fs-error="incentive_sharing" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="group-label">12. Would you be willing to refer friends if the platform provided incentives?</label>
+            <div class="options-layout">
+                <div class="option-node"><input type="radio" id="ref_def" name="referral_intent" value="Definitely" required data-fs-field><label for="ref_def">Definitely</label></div>
+                <div class="option-node"><input type="radio" id="ref_maybe" name="referral_intent" value="Maybe" data-fs-field><label for="ref_maybe">Maybe</label></div>
+                <div class="option-node"><input type="radio" id="ref_no" name="referral_intent" value="No" data-fs-field><label for="ref_no">No</label></div>
+            </div>
+            <span data-fs-error="referral_intent" class="error-message"></span>
+        </div>
+
+        <h2>Section 5: Future Adoption</h2>
+
+        <div class="form-group">
+            <label for="adoption_velocity" class="group-label">13. If TP launched today, how likely would you be to create an account?</label>
+            <select id="adoption_velocity" name="account_creation_likelihood" required data-fs-field>
+                <option value="">-- Select Likelihood --</option>
+                <option value="Very likely">Very likely</option>
+                <option value="Likely">Likely</option>
+                <option value="Unsure">Unsure</option>
+                <option value="Unlikely">Unlikely</option>
+                <option value="Very unlikely">Very unlikely</option>
+            </select>
+            <span data-fs-error="account_creation_likelihood" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="country_node" class="group-label">14. Which country are you responding from?</label>
+            <input type="text" id="country_node" name="provenance_country" required placeholder="e.g., France, Switzerland, Nigeria" data-fs-field>
+            <span data-fs-error="provenance_country" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="trust_trigger" class="group-label">15. What would make you trust TP?</label>
+            <textarea id="trust_trigger" name="trust_catalysts" rows="3" placeholder="Identify security or transparency mechanisms that drive your confidence..." data-fs-field></textarea>
+            <span data-fs-error="trust_catalysts" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="open_feedback" class="group-label">16. Additional comments or suggestions</label>
+            <textarea id="open_feedback" name="system_feedback" rows="3" placeholder="Enter supplemental notes or observations..." data-fs-field></textarea>
+            <span data-fs-error="system_feedback" class="error-message"></span>
+        </div>
+
         <div class="form-group" style="margin-top: 40px;">
-            <button type="submit" data-fs-submit-btn>Submit Validation Payload to Waitlist Queue</button>
+            <button type="submit" data-fs-submit-btn>Submit Survey Payload</button>
         </div>
     </form>
 </div>
 
-<!-- Formspree AJAX Engine Initialization -->
 <script>
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-  formspree('initForm', { formElement: '#tp-validation-form', formId: 'mojzzkyr' });
+  formspree('initForm', { formElement: '#tp-public-survey-form', formId: 'mojzzkyr' });
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
