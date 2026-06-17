@@ -255,14 +255,13 @@
         Submission error. Please verify network accessibility or check missing required parameters.
     </div>
 
-    <form id="tp-public-survey-form">
+    <form id="tp-public-survey-form" action="https://formspree.io/f/mojzzkyr" method="POST">
         
         <input type="hidden" name="survey_version" value="TP-v1">
         <input type="hidden" name="source" value="github-pages">
         <input type="hidden" name="submission_type" value="public-survey">
         <input type="hidden" name="_gotcha">
 
-        <!-- SECTION 1 -->
         <h2 id="sec-1">Section 1: About You</h2>
         
         <div class="form-group">
@@ -306,7 +305,6 @@
             <span data-fs-error="markets_tracked" class="error-message"></span>
         </div>
 
-        <!-- SECTION 2 -->
         <h2 id="sec-2">Section 2: Problems & Challenges</h2>
 
         <div class="form-group">
@@ -344,7 +342,6 @@
             <span data-fs-error="liquidation_concern" class="error-message"></span>
         </div>
 
-        <!-- SECTION 3 -->
         <h2 id="sec-3">Section 3: TP Evaluation Matrix</h2>
 
         <div class="form-group">
@@ -400,7 +397,6 @@
             <span data-fs-error="primary_skepticism_vector" class="error-message"></span>
         </div>
 
-        <!-- SECTION 4 -->
         <h2 id="sec-4">Section 4: Community Participation</h2>
 
         <div class="form-group">
@@ -423,7 +419,6 @@
             <span data-fs-error="referral_intent" class="error-message"></span>
         </div>
 
-        <!-- SECTION 5 -->
         <h2 id="sec-5">Section 5: Future Adoption Parameters</h2>
 
         <div class="form-group">
@@ -451,7 +446,6 @@
             <span data-fs-error="system_feedback" class="error-message"></span>
         </div>
 
-        <!-- SECTION 6: OPTIONAL IDENTITY DATA -->
         <h2 id="sec-6">Section 6: Contact Information <span class="optional-badge">Optional</span></h2>
         <p class="description">Provide your contact links to secure placement slots if the pilot environment launches. These inputs can be completely bypassed.</p>
 
