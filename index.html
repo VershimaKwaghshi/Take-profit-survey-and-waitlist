@@ -3,109 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Take Profit (TP) - Institutional Validation Survey</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            line-height: 1.6;
-            padding: 40px 20px;
-            margin: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #111827;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #1f2937;
-        }
-        h2 {
-            margin-top: 0;
-            color: #ffffff;
-            font-weight: 600;
-            border-bottom: 1px solid #1f2937;
-            padding-bottom: 10px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #9ca3af;
-        }
-        input[type="text"], input[type="email"], select, textarea {
-            width: 100%;
-            padding: 12px;
-            background: #1f2937;
-            border: 1px solid #374151;
-            border-radius: 4px;
-            color: #ffffff;
-            box-sizing: border-box;
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-        button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:hover {
-            background: #1d4ed8;
-        }
-        .note {
-            font-size: 12px;
-            color: #6b7280;
-            margin-top: 15px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h2>Take Profit (TP) Private Pilot Application</h2>
-    <p style="color: #9ca3af; font-size: 14px;">Please complete the initial market validation survey to clear validation gates for the 100-Day Capital Building Plan waitlist.</p>
-    
-    <!-- REPLACE THE ACTION URL WITH YOUR FORMSPREE ENDPOINT -->
-    <form action="https://formspree.io/f/xxxxxxxx" method="POST">
-        
-        <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="Name" required placeholder="John Doe">
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="Email" required placeholder="johnThe document title is the Take Profit (TP) Market Validation Survey and Infrastructure Integration Specification.
-
-Deploying your market validation survey via a static GitHub Pages repository paired with Formspree gives you an elite, zero-cost, hyper-scalable acquisition layer. This structure ensures you collect clean user behavior metrics and trader profiles before routing them to your central validation databases, entirely bypassing complex backend setups while keeping your infrastructure footprint clean.
-
-Here is the production-ready code template and deployment protocol to launch your Take Profit validation waitlist.
-
----
-
-## 1. The Production Index Code (`index.html`)
-
-Create a file named `index.html` in your local directory. This template uses clear, scannable Markdown formatting semantics translated into clean HTML, incorporating geometric minimalism and your specific structural constraints.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Take Profit (TP) — Validation Engine</title>
     <style>
         :root {
@@ -113,6 +10,8 @@ Create a file named `index.html` in your local directory. This template uses cle
             --text-color: #c5c6c7;
             --accent-color: #45f3ff;
             --card-bg: #1f2833;
+            --error-color: #ff4a4a;
+            --success-color: #2ecc71;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -201,6 +100,37 @@ Create a file named `index.html` in your local directory. This template uses cle
         button:hover {
             opacity: 0.9;
         }
+        button:disabled {
+            background-color: #4e5d6c;
+            color: #8b949e;
+            cursor: not-allowed;
+        }
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+        }
+        .alert-success {
+            background-color: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .alert-error {
+            background-color: rgba(255, 74, 74, 0.1);
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -212,25 +142,34 @@ Create a file named `index.html` in your local directory. This template uses cle
     
     <hr>
 
-    <!-- REPLACE THE ACTION URL WITH YOUR FORMSPREE ENDPOINT LINK -->
-    <form action="[https://formspree.io/f/YOUR_FORMSPREE_ID](https://formspree.io/f/YOUR_FORMSPREE_ID)" method="POST">
+    <!-- Formspree State Response Elements -->
+    <div data-fs-success class="alert-success" style="display: none;">
+        Payload verified. Your node has been assigned a placeholder index in the upcoming validation queue.
+    </div>
+    <div data-fs-error class="alert-error" style="display: none;">
+        Submission failed. Please verify your data attributes and clear infrastructure blocks.
+    </div>
+
+    <form id="tp-validation-form">
         
         <!-- Section 1: Identification & Core Routing -->
         <div class="form-group">
             <label for="name">Full Name / Corporate Entity</label>
-            <input type="text" id="name" name="name" required placeholder="John Doe">
+            <input type="text" id="name" name="name" required placeholder="John Doe" data-fs-field>
+            <span data-fs-error="name" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="email">Secure Communication Email Address</label>
-            <input type="email" id="email" name="_replyto" required placeholder="name@domain.com">
+            <input type="email" id="email" name="_replyto" required placeholder="name@domain.com" data-fs-field>
+            <span data-fs-error="_replyto" class="error-message"></span>
         </div>
 
         <!-- Section 2: Technical & Broker Parameters -->
         <div class="form-group">
             <label for="broker">Primary Brokerage Infrastructure</label>
             <div class="description">Identify your active liquidity routing clearinghouse.</div>
-            <select id="broker" name="primary_broker" required>
+            <select id="broker" name="primary_broker" required data-fs-field>
                 <option value="">-- Select Active Broker --</option>
                 <option value="exness">Exness</option>
                 <option value="pepperstone">Pepperstone</option>
@@ -238,6 +177,7 @@ Create a file named `index.html` in your local directory. This template uses cle
                 <option value="fundednext">FundedNext (Evaluation Engine)</option>
                 <option value="other">Alternative Brokerage Corridor</option>
             </select>
+            <span data-fs-error="primary_broker" class="error-message"></span>
         </div>
 
         <div class="form-group">
@@ -245,51 +185,62 @@ Create a file named `index.html` in your local directory. This template uses cle
             <div class="description">How do you currently prevent account liquidation during macro market gaps?</div>
             <div class="radio-group">
                 <div class="radio-option">
-                    <input type="radio" id="risk1" name="risk_policy" value="manual" required>
+                    <input type="radio" id="risk1" name="risk_policy" value="manual" required data-fs-field>
                     <label for="risk1">Manual Stop-Loss Execution (Susceptible to Slippage)</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" id="risk2" name="risk_policy" value="none">
+                    <input type="radio" id="risk2" name="risk_policy" value="none" data-fs-field>
                     <label for="risk2">No Hard Liquidation Locks (Relying entirely on equity buffers)</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" id="risk3" name="risk_policy" value="automated">
+                    <input type="radio" id="risk3" name="risk_policy" value="automated" data-fs-field>
                     <label for="risk3">Automated Infrastructure-Level Locks</label>
                 </div>
             </div>
+            <span data-fs-error="risk_policy" class="error-message"></span>
         </div>
 
         <!-- Section 3: Network & Cohort Distribution -->
         <div class="form-group">
             <label for="volume">Average Monthly Nominal Trading Volume (USD)</label>
-            <select id="volume" name="monthly_volume" required>
+            <select id="volume" name="monthly_volume" required data-fs-field>
                 <option value="low">Under $50,000</option>
                 <option value="mid">$50,000 - $500,000</option>
-                <option value="high">$500,000 - $5,000,000</option>
+                <option value="high">$50,000 - $5,000,000</option>
                 <option value="institutional">Above $5,000,000</option>
             </select>
+            <span data-fs-error="monthly_volume" class="error-message"></span>
         </div>
 
         <div class="form-group">
             <label for="referral_network">Current Affiliate or Managed User Network Size</label>
             <div class="description">Necessary for structural allocation mapping within the serial cohort building phase.</div>
-            <input type="text" id="referral_network" name="network_nodes" placeholder="e.g., 50 active traders">
+            <input type="text" id="referral_network" name="network_nodes" placeholder="e.g., 50 active traders" data-fs-field>
+            <span data-fs-error="network_nodes" class="error-message"></span>
         </div>
 
         <!-- Section 4: Operational Data -->
         <div class="form-group">
             <label for="critical_features">What is your most critical requirement for an automated risk-enforcement engine?</label>
-            <textarea id="critical_features" name="critical_needs" rows="4" placeholder="Describe edge-case execution requirements or latency protection needs..."></textarea>
+            <textarea id="critical_features" name="critical_needs" rows="4" placeholder="Describe edge-case execution requirements or latency protection needs..." data-fs-field></textarea>
+            <span data-fs-error="critical_needs" class="error-message"></span>
         </div>
 
         <!-- Anti-Spam Hidden Field -->
         <input type="hidden" name="_gotcha">
 
         <div class="form-group" style="margin-top: 40px;">
-            <button type="submit">Submit Validation Payload to Waitlist Queue</button>
+            <button type="submit" data-fs-submit-btn>Submit Validation Payload to Waitlist Queue</button>
         </div>
     </form>
 </div>
+
+<!-- Formspree AJAX Engine Initialization -->
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#tp-validation-form', formId: 'mojzzkyr' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
