@@ -200,27 +200,40 @@
         button:active {
             transform: scale(0.99);
         }
+
+        .success-box {
+            display: none;
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        .success-box h2 {
+            justify-content: center;
+        }
+
+        .success-box h2::before {
+            display: none;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>TAKE PROFIT (TP)</h1>
-    <div class="subtitle">Public Interest & Feedback Survey</div>
-    
+    <div class="subtitle">Quick Survey</div>
+
     <div class="intro-block">
-        Take Profit (TP) is a platform built to connect retail users, professional trading managers, liquidity providers, and risk-sharing participants through a structured, rule-based environment. This survey helps us understand public priorities, risk preferences, and data parameters before our localized launch. Estimated completion time: 3–5 minutes.
+        Take Profit (TP) is a platform built to help traders avoid losing their capital for good, while making it easier for new traders to get funded. This short survey helps us understand what people want before we launch. Takes about 3–5 minutes.
     </div>
 
-    <form id="tp-public-survey-form" action="https://formspree.io/f/mojzzkyr" method="POST">
-        
+    <form id="tp-public-survey-form" action="YOUR_GOOGLE_APPS_SCRIPT_URL_HERE" method="POST">
+
         <input type="hidden" name="survey_version" value="TP-v1">
         <input type="hidden" name="source" value="github-pages">
         <input type="hidden" name="submission_type" value="public-survey">
-        <input type="hidden" name="_gotcha">
 
         <h2 id="sec-1">Section 1: About You</h2>
-        
+
         <div class="form-group">
             <label class="group-label">1. Which best describes you?</label>
             <div class="options-layout">
@@ -237,9 +250,9 @@
         </div>
 
         <div class="form-group">
-            <label for="familiarity" class="group-label">2. How familiar are you with financial markets?</label>
+            <label for="familiarity" class="group-label">2. How familiar are you with trading or financial markets?</label>
             <select id="familiarity" name="market_familiarity" required>
-                <option value="">-- Select Familiarity Tier --</option>
+                <option value="">-- Select One --</option>
                 <option value="Very familiar">Very familiar</option>
                 <option value="Somewhat familiar">Somewhat familiar</option>
                 <option value="Basic knowledge">Basic knowledge</option>
@@ -248,7 +261,7 @@
         </div>
 
         <div class="form-group">
-            <label class="group-label">3. Which markets have you participated in? (Check all that apply)</label>
+            <label class="group-label">3. Which markets have you traded? (Check all that apply)</label>
             <div class="options-layout">
                 <div class="option-node"><input type="checkbox" id="mkt_fx" name="markets_tracked[]" value="Forex"><label for="mkt_fx">Forex</label></div>
                 <div class="option-node"><input type="checkbox" id="mkt_crypto" name="markets_tracked[]" value="Cryptocurrency"><label for="mkt_crypto">Cryptocurrency</label></div>
@@ -259,23 +272,23 @@
             </div>
         </div>
 
-        <h2 id="sec-2">Section 2: Problems & Challenges</h2>
+        <h2 id="sec-2">Section 2: Your Challenges</h2>
 
         <div class="form-group">
-            <label class="group-label">4. What is the biggest challenge preventing you from growing wealth?</label>
+            <label class="group-label">4. What is the biggest thing stopping you from growing your money?</label>
             <div class="options-layout">
-                <div class="option-node"><input type="radio" id="ch_cap" name="wealth_challenge" value="Lack of capital" required><label for="ch_cap">Lack of capital</label></div>
-                <div class="option-node"><input type="radio" id="ch_knw" name="wealth_challenge" value="Lack of knowledge"><label for="ch_knw">Lack of knowledge</label></div>
+                <div class="option-node"><input type="radio" id="ch_cap" name="wealth_challenge" value="Lack of capital" required><label for="ch_cap">Not having enough money to start</label></div>
+                <div class="option-node"><input type="radio" id="ch_knw" name="wealth_challenge" value="Lack of knowledge"><label for="ch_knw">Not knowing enough about trading</label></div>
                 <div class="option-node"><input type="radio" id="ch_fear" name="wealth_challenge" value="Fear of losing money"><label for="ch_fear">Fear of losing money</label></div>
-                <div class="option-node"><input type="radio" id="ch_trust" name="wealth_challenge" value="Lack of trustworthy opportunities"><label for="ch_trust">Lack of trustworthy opportunities</label></div>
-                <div class="option-node"><input type="radio" id="ch_time" name="wealth_challenge" value="Lack of time"><label for="ch_time">Lack of time</label></div>
-                <div class="option-node"><input type="radio" id="ch_access" name="wealth_challenge" value="Limited access to financial services"><label for="ch_access">Limited access to financial services</label></div>
+                <div class="option-node"><input type="radio" id="ch_trust" name="wealth_challenge" value="Lack of trustworthy opportunities"><label for="ch_trust">Not finding anything trustworthy</label></div>
+                <div class="option-node"><input type="radio" id="ch_time" name="wealth_challenge" value="Lack of time"><label for="ch_time">Not having enough time</label></div>
+                <div class="option-node"><input type="radio" id="ch_access" name="wealth_challenge" value="Limited access to financial services"><label for="ch_access">Limited access to banking or financial tools</label></div>
                 <div class="option-node"><input type="radio" id="ch_other" name="wealth_challenge" value="Other"><label for="ch_other">Other</label></div>
             </div>
         </div>
 
         <div class="form-group">
-            <label class="group-label">5. Have you ever lost money due to poor investment or trading decisions?</label>
+            <label class="group-label">5. Have you ever lost money from a bad trade or investment?</label>
             <div class="options-layout">
                 <div class="option-node"><input type="radio" id="lost_yes" name="historical_loss" value="Yes" required><label for="lost_yes">Yes</label></div>
                 <div class="option-node"><input type="radio" id="lost_no" name="historical_loss" value="No"><label for="lost_no">No</label></div>
@@ -283,71 +296,71 @@
         </div>
 
         <div class="form-group">
-            <label for="concern_level" class="group-label">6. How concerned are you about losing your entire investment capital?</label>
+            <label for="concern_level" class="group-label">6. How worried are you about losing all your trading money for good?</label>
             <select id="concern_level" name="liquidation_concern" required>
-                <option value="">-- Select Concern Level --</option>
-                <option value="Extremely concerned">Extremely concerned</option>
-                <option value="Moderately concerned">Moderately concerned</option>
-                <option value="Slightly concerned">Slightly concerned</option>
-                <option value="Not concerned">Not concerned</option>
+                <option value="">-- Select One --</option>
+                <option value="Extremely concerned">Very worried</option>
+                <option value="Moderately concerned">Somewhat worried</option>
+                <option value="Slightly concerned">A little worried</option>
+                <option value="Not concerned">Not worried</option>
             </select>
         </div>
 
-        <h2 id="sec-3">Section 3: TP Evaluation Matrix</h2>
+        <h2 id="sec-3">Section 3: What You Think of TP</h2>
 
         <div class="form-group">
-            <label for="interest_mitigation" class="group-label">7. If a platform could reduce the risk of permanently losing your capital, how interested would you be?</label>
+            <label for="interest_mitigation" class="group-label">7. If a platform made it almost impossible to lose your money for good, how interested would you be?</label>
             <select id="interest_mitigation" name="interest_risk_mitigation" required>
-                <option value="">-- Select Option --</option>
+                <option value="">-- Select One --</option>
                 <option value="Very interested">Very interested</option>
                 <option value="Interested">Interested</option>
-                <option value="Neutral">Neutral</option>
+                <option value="Neutral">Not sure</option>
                 <option value="Not interested">Not interested</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="manager_opt_in" class="group-label">8. Would you consider allowing a vetted professional manager to trade on your behalf if clear risk limits existed?</label>
+            <label for="manager_opt_in" class="group-label">8. Would you let another skilled trader trade your account for you, if clear safety limits were in place?</label>
             <select id="manager_opt_in" name="manager_delegation" required>
-                <option value="">-- Select Option --</option>
+                <option value="">-- Select One --</option>
                 <option value="Definitely">Definitely</option>
                 <option value="Maybe">Maybe</option>
-                <option value="Unsure">Unsure</option>
+                <option value="Unsure">Not sure</option>
                 <option value="No">No</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="target_feature" class="group-label">9. Which TP feature interests you the most?</label>
+            <label for="target_feature" class="group-label">9. Which part of TP interests you the most?</label>
             <select id="target_feature" name="primary_feature_interest" required>
-                <option value="">-- Select Feature --</option>
-                <option value="Capital protection mechanisms">Capital protection mechanisms</option>
-                <option value="Access to professional managers">Access to professional managers</option>
-                <option value="Capital-building opportunities">Capital-building opportunities</option>
-                <option value="Community risk-sharing features">Community risk-sharing features</option>
-                <option value="Referral rewards">Referral rewards</option>
+                <option value="">-- Select One --</option>
+                <option value="Capital protection mechanisms">Protecting my money from total loss</option>
+                <option value="Access to professional managers">Letting a skilled trader handle my account</option>
+                <option value="Capital-building opportunities">Getting funded without starting capital</option>
+                <option value="Community risk-sharing features">Helping others and earning from it</option>
+                <option value="Referral rewards">Earning rewards for inviting others</option>
                 <option value="None of the above">None of the above</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="primary_skepticism" class="group-label">10. What concerns you most about a platform like TP?</label>
+            <label for="primary_skepticism" class="group-label">10. What worries you most about a platform like TP?</label>
             <select id="primary_skepticism" name="primary_skepticism_vector" required>
-                <option value="">-- Select Primary Concern --</option>
-                <option value="Trust and transparency">Trust and transparency</option>
-                <option value="Security">Security</option>
-                <option value="Regulation and compliance">Regulation and compliance</option>
-                <option value="Fees">Fees</option>
-                <option value="Manager performance">Manager performance</option>
-                <option value="Risk-sharing structure">Risk-sharing structure</option>
+                <option value="">-- Select One --</option>
+                <option value="Trust and transparency">Trust — is it real and honest</option>
+                <option value="Security">Keeping my money and info safe</option>
+                <option value="Regulation and compliance">Whether it follows the rules and laws</option>
+                <option value="Fees">The fees</option>
+                <option value="Manager performance">Whether the trader managing my money is any good</option>
+                <option value="Risk-sharing structure">How losses are shared or covered</option>
                 <option value="Other">Other</option>
             </select>
         </div>
 
-        <h2 id="sec-4">Section 4: Community Participation</h2>
+        <h2 id="sec-4">Section 4: Helping Others</h2>
 
         <div class="form-group">
-            <label class="group-label">11. Would you be interested in earning rewards for supporting other users within the platform?</label>
+            <label class="group-label">11. Would you be interested in earning rewards for helping other users on the platform?</label>
             <div class="options-layout">
                 <div class="option-node"><input type="radio" id="rew_yes" name="incentive_sharing" value="Yes" required><label for="rew_yes">Yes</label></div>
                 <div class="option-node"><input type="radio" id="rew_maybe" name="incentive_sharing" value="Maybe"><label for="rew_maybe">Maybe</label></div>
@@ -356,7 +369,7 @@
         </div>
 
         <div class="form-group">
-            <label class="group-label">12. Would you be willing to refer friends if the platform provided incentives?</label>
+            <label class="group-label">12. Would you invite friends if you got rewarded for it?</label>
             <div class="options-layout">
                 <div class="option-node"><input type="radio" id="ref_def" name="referral_intent" value="Definitely" required><label for="ref_def">Definitely</label></div>
                 <div class="option-node"><input type="radio" id="ref_maybe" name="referral_intent" value="Maybe"><label for="ref_maybe">Maybe</label></div>
@@ -364,32 +377,32 @@
             </div>
         </div>
 
-        <h2 id="sec-5">Section 5: Future Adoption Parameters</h2>
+        <h2 id="sec-5">Section 5: Looking Ahead</h2>
 
         <div class="form-group">
-            <label for="adoption_velocity" class="group-label">13. If TP launched today, how likely would you be to create an account?</label>
+            <label for="adoption_velocity" class="group-label">13. If TP launched today, how likely would you be to sign up?</label>
             <select id="adoption_velocity" name="account_creation_likelihood" required>
-                <option value="">-- Select Likelihood --</option>
+                <option value="">-- Select One --</option>
                 <option value="Very likely">Very likely</option>
                 <option value="Likely">Likely</option>
-                <option value="Unsure">Unsure</option>
+                <option value="Unsure">Not sure</option>
                 <option value="Unlikely">Unlikely</option>
                 <option value="Very unlikely">Very unlikely</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="country_node" class="group-label">14. Which country are you responding from?</label>
+            <label for="country_node" class="group-label">14. Which country are you in?</label>
             <input type="text" id="country_node" name="provenance_country" required placeholder="e.g., Nigeria, Kenya, UK">
         </div>
 
         <div class="form-group">
-            <label for="open_feedback" class="group-label">15. Additional comments or suggestions</label>
-            <textarea id="open_feedback" name="system_feedback" rows="3" placeholder="Enter supplemental notes or observations..."></textarea>
+            <label for="open_feedback" class="group-label">15. Any other comments or suggestions?</label>
+            <textarea id="open_feedback" name="system_feedback" rows="3" placeholder="Type anything you'd like us to know..."></textarea>
         </div>
 
-        <h2 id="sec-6">Section 6: Contact Information <span class="optional-badge">Optional</span></h2>
-        <p class="description">Provide your contact links to secure placement slots if the pilot environment launches. These inputs can be completely bypassed.</p>
+        <h2 id="sec-6">Section 6: Stay in the Loop <span class="optional-badge">Optional</span></h2>
+        <p class="description">Leave your details if you'd like early access when TP launches. You can skip this section completely.</p>
 
         <div class="form-group">
             <label for="user_name">Full Name <span class="optional-badge">Optional</span></label>
@@ -407,10 +420,42 @@
         </div>
 
         <div class="form-group" style="margin-top: 40px;">
-            <button type="submit">Submit Survey Payload</button>
+            <button type="submit" id="submit-btn">Submit</button>
         </div>
     </form>
+
+    <div class="success-box" id="success-box">
+        <h2>Thank you!</h2>
+        <p>Your response has been received. We appreciate your time.</p>
+    </div>
 </div>
+
+<script>
+    const form = document.getElementById('tp-public-survey-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(() => {
+            form.style.display = 'none';
+            document.getElementById('success-box').style.display = 'block';
+        })
+        .catch(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit';
+            alert('Something went wrong. Please check your connection and try again.');
+        });
+    });
+</script>
 
 </body>
 </html>
