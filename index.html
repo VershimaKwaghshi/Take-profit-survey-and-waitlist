@@ -50,6 +50,18 @@
             text-align: center;
         }
 
+        .slogan {
+            background: linear-gradient(90deg, #b8860b 0%, #ffd700 35%, #fff7c2 50%, #ffd700 65%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 0 0 18px 0;
+            letter-spacing: 0.02em;
+        }
+
         .subtitle {
             color: var(--accent-neon);
             font-size: 0.85rem;
@@ -220,13 +232,14 @@
 
 <div class="container">
     <h1>TAKE PROFIT (TP)</h1>
+    <div class="slogan">You Can Now Earn!</div>
     <div class="subtitle">Quick Survey</div>
 
     <div class="intro-block">
         Take Profit (TP) is a platform built to help traders avoid losing their capital for good, while making it easier for new traders to get funded. This short survey helps us understand what people want before we launch. Takes about 3–5 minutes.
     </div>
 
-    <form id="tp-public-survey-form" action="https://script.google.com/macros/s/AKfycbxkzRITQCMqF6vMF3SkLq74bHYAFgVFGPB4owV5JU0Om03SgndFPvKoOhYlgfO2LwWgLA/exec" method="POST">
+    <form id="tp-public-survey-form" action="https://script.google.com/macros/s/AKfycbxkzRITQCMqF6vMF3SkLq74bHYAFgVFGPB4owV5JU0Om03SgndFPvKoOhYlgfO2LwWgLA/exec" method="POST" target="hidden-submit-frame">
 
         <input type="hidden" name="survey_version" value="TP-v1">
         <input type="hidden" name="source" value="github-pages">
@@ -428,32 +441,28 @@
         <h2>Thank you!</h2>
         <p>Your response has been received. We appreciate your time.</p>
     </div>
+
+    <iframe name="hidden-submit-frame" id="hidden-submit-frame" style="display:none;"></iframe>
 </div>
 
 <script>
     const form = document.getElementById('tp-public-survey-form');
     const submitBtn = document.getElementById('submit-btn');
+    const hiddenFrame = document.getElementById('hidden-submit-frame');
+    let submitted = false;
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+    form.addEventListener('submit', function () {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting...';
+        submitted = true;
+        // Form posts naturally to the hidden iframe — no fetch, no CORS issue.
+    });
 
-        const formData = new FormData(form);
-
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(() => {
+    hiddenFrame.addEventListener('load', function () {
+        if (submitted) {
             form.style.display = 'none';
             document.getElementById('success-box').style.display = 'block';
-        })
-        .catch(() => {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit';
-            alert('Something went wrong. Please check your connection and try again.');
-        });
+        }
     });
 </script>
 
